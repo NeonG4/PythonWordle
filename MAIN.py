@@ -1,9 +1,4 @@
-#
-#
-#WHEN YOU MAKE A CHANGE, DO A PULL REQUEST!!!
-#
-#
-import os, random
+import os, random, re, sys
 file = open("words.txt", "r")
 word = readline(random.randint(0, 5756))
 
@@ -33,11 +28,12 @@ def main(word):
     else:
       dispword = checkwordgreen(guess, word)
       
-
-ans = input("Do you want to play wordle?").strip().lower()
-if ans == "yes":
-  main(word)
-elif ans == "no":
-  print("Okay...")
-else:
-  print("I'm sorry, I didn't quite understand.")
+if "__main__" == __name__:
+  ans = input("Do you want to play wordle?").strip().lower()
+  if re.search("y.*",ans):
+    main(word)
+  elif re.search("n.*",ans):
+    print("Okay...")
+    sys.exit()
+  else:
+    print("I'm sorry, I didn't quite understand.")
