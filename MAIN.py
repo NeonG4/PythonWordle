@@ -1,3 +1,8 @@
+#
+#
+#WHEN YOU MAKE A CHANGE, DO A PULL REQUEST!!!
+#
+#
 import os, random
 file = open("words.txt", "r")
 word = readline(random.randint(0, 5756))
