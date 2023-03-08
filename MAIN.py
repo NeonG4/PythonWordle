@@ -17,12 +17,13 @@ def checkwordgreen(guess, word):
       rtrn.append("🟨")
     else:
       rtrn.append("⬜")
-    return rtrn
+  return rtrn
      
 
 def main(word):
   print("Hello world")
-  os.system("clear") #cls not defined. 
+  try: subprocess.run(['cls'], check = True)
+  except: subprocess.run(['clear'], check = True)
   cycles = 0
 
   while True:
@@ -54,7 +55,7 @@ def main(word):
     
     else:
       cycles += 1
-      dispword = checkwordgreen(guess, word)
+      print(checkwordgreen(guess, word))
 
 
 if "__main__" == __name__:
