@@ -12,22 +12,30 @@ def checkwordgreen(guess, word):
   for i in range(6):
     letter = word[i]
     if letter == guess[i]:
-      rtrn.append("g")
+      rtrn.append("🟩")
     elif letter in guess:
-      rtrn.append("y")
+      rtrn.append("🟨")
     else:
-      rtrn.append("g")
+      rtrn.append("⬜")
     return rtrn
      
 
 def main(word):
   print("Hello world")
   os.system("cls")
+  cycles = 0
 
   while True:
+    
+    if cycles >= 5:
+      print("Game over! You lost")
+      break
+    
     guess = input("What is your guess?").strip().lower()
     #testcase
     
+
+
     if not guess.isalpha():
       print("Please enter only letters!")
     
@@ -45,8 +53,10 @@ def main(word):
       break
     
     else:
+      cycles += 1
       dispword = checkwordgreen(guess, word)
-      
+
+
 if "__main__" == __name__:
   ans = input("Do you want to play wordle?").strip().lower()
   if re.search("y.*",ans):
