@@ -1,7 +1,11 @@
 import os, random, re, sys
 file = open("words.txt", "r")
-word = file.readline(random.randint(0, 5756))
+content = file.readlines()
+content = [s.strip() for s in content]
 
+
+word = content[random.randint(0, 5756)]
+word = word
 
 def checkwordgreen(guess, word):
   rtrn = []
@@ -18,13 +22,28 @@ def checkwordgreen(guess, word):
 
 def main(word):
   print("Hello world")
-  os.system("clear")
+  os.system("cls")
+
   while True:
-    guess = input("What is your guess?")
+    guess = input("What is your guess?").strip().lower()
     #testcase
-    if guess == word:
+    
+    if not guess.isalpha():
+      print("Please enter only letters!")
+    
+    elif len(guess) > 5:
+      print("Too much letters!")  
+    
+    elif len(guess) < 5:
+      print("Too little letters!")    
+    
+    elif not guess in content:
+      print("Please enter an existing word!")
+
+    elif guess == word:
       print("Nice job!")
       break
+    
     else:
       dispword = checkwordgreen(guess, word)
       
