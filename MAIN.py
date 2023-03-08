@@ -7,7 +7,7 @@ content = [s.strip() for s in content]
 word = content[random.randint(0, 5756)]
 word = word
 
-def checkwordgreen(guess, word):
+def checkword(guess, word):
   rtrn = []
   for i in range(6):
     letter = word[i]
@@ -55,7 +55,8 @@ def main(word):
     
     else:
       cycles += 1
-      print(checkwordgreen(guess, word))
+      checkword(guess, word)
+      print(checkword)
 
 
 if "__main__" == __name__:
