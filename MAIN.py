@@ -1,6 +1,6 @@
 import os, random, re, sys
 file = open("words.txt", "r")
-word = readline(random.randint(0, 5756))
+word = file.readline(random.randint(0, 5756))
 
 
 def checkwordgreen(guess, word):
