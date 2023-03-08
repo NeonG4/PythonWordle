@@ -17,7 +17,7 @@ def checkwordgreen(guess, word):
       rtrn.append("🟨")
     else:
       rtrn.append("⬜")
-    return rtrn
+  return rtrn
      
 
 def main(word):
@@ -54,7 +54,7 @@ def main(word):
     
     else:
       cycles += 1
-      dispword = checkwordgreen(guess, word)
+      print(checkwordgreen(guess, word))
 
 
 if "__main__" == __name__:
