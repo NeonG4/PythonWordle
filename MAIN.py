@@ -22,7 +22,8 @@ def checkwordgreen(guess, word):
 
 def main(word):
   print("Hello world")
-  os.system("cls")
+  try: subprocess.run(['cls'], check = True)
+  except: subprocess.run(['clear'], check = True)
   cycles = 0
 
   while True:
