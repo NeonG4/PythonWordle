@@ -1,9 +1,11 @@
 import os, random, re, sys
 file = open("words.txt", "r")
 content = file.readlines()
+content = [s.strip() for s in content]
+
 
 word = content[random.randint(0, 5756)]
-word = word.strip() # Fixes the bug!
+word = word
 
 def checkwordgreen(guess, word):
   rtrn = []
@@ -35,6 +37,9 @@ def main(word):
     elif len(guess) < 5:
       print("Too little letters!")    
     
+    elif not guess in content:
+      print("Please enter an existing word!")
+
     elif guess == word:
       print("Nice job!")
       break
