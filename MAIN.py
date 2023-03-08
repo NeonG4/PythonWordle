@@ -22,7 +22,7 @@ def checkwordgreen(guess, word):
 
 def main(word):
   print("Hello world")
-  os.system("cls")
+  os.system("clear") #cls not defined. 
   cycles = 0
 
   while True:
