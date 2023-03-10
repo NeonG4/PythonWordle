@@ -22,8 +22,7 @@ def checkword(guess, word):
 
 def main(word):
   print("Hello world")
-  try: subprocess.run(['cls'], check = True)
-  except: subprocess.run(['clear'], check = True)
+  os.system("cls")
   cycles = 0
 
   while True:
