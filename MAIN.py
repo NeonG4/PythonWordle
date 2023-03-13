@@ -1,4 +1,4 @@
-import os, random, re, sys, subprocess
+import os, random, re, sys, subprocess, logging
 
 file = open("words.txt", "r")
 content = file.readlines()
@@ -22,7 +22,7 @@ def checkword(guess, word):
 
 
 def main(word):
-  print("Hello world")
+  logging.debug("Started func")
   os.system("cls")
   os.system("clear")
   cycles = 0
@@ -31,13 +31,16 @@ def main(word):
 
     if cycles >= 6:
       print("Game over! You lost")
+      logging.debug("Cycles >= 6")
       break
-
+    logging.debug("Getting guess")
     guess = input("What is your guess?").strip().lower()
+    logging.debug("Got guess")
     #testcase
 
     if not guess.isalpha():
       print("Please enter only letters!")
+      logging.debug("failed is alpha")
 
     elif len(guess) > 5:
       print("Too much letters!")
