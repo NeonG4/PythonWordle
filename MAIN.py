@@ -54,8 +54,8 @@ def main(word):
 
     else:
       cycles += 1
-      checkword(guess, word)
-      print(checkword)
+      result = checkword(guess, word)
+      print(result)
 
 
 if "__main__" == __name__:
