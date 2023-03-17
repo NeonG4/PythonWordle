@@ -1,6 +1,6 @@
 import os, random, re, sys, subprocess, logging
 
-logging.basicConfig(filename=logname,
+logging.basicConfig(filename="output.log",
                     filemode='a',
                     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                     datefmt='%H:%M:%S',
@@ -55,7 +55,7 @@ def main(word):
 
     elif len(guess) < 5:
       print("Too little letters!")
-       logging.debug("failed lettercount2")
+      logging.debug("failed lettercount2")
      
 
     elif not guess in content:
