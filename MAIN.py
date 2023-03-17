@@ -1,5 +1,11 @@
 import os, random, re, sys, subprocess, logging
 
+logging.basicConfig(filename=logname,
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.DEBUG)
+
 file = open("words.txt", "r")
 content = file.readlines()
 content = [s.strip() for s in content]
@@ -40,24 +46,33 @@ def main(word):
 
     if not guess.isalpha():
       print("Please enter only letters!")
-      logging.debug("failed is alpha")
+      logging.debug("failed isalpha")
 
     elif len(guess) > 5:
       print("Too much letters!")
+      logging.debug("failed lettercount1")
+      
 
     elif len(guess) < 5:
       print("Too little letters!")
+       logging.debug("failed lettercount2")
+     
 
     elif not guess in content:
       print("Please enter an existing word!")
+      logging.debug("failed trueword")
 
     elif guess == word:
       print("Nice job!")
+      logging.debug("correct word")
+      
       break
 
     else:
       cycles += 1
       result = checkword(guess, word)
+      logging.debug("elseword")
+      
       print(result)
 
 
