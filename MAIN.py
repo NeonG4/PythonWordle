@@ -1,11 +1,5 @@
 import os, random, re, sys, subprocess, logging
 
-logging.basicConfig(filename="output.log",
-                    filemode='w',
-                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                    datefmt='%H:%M:%S',
-                    level=logging.DEBUG)
-
 file = open("words.txt", "r")
 content = file.readlines()
 content = [s.lower().strip() for s in content]
