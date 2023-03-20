@@ -11,6 +11,7 @@ content = file.readlines()
 content = [s.lower().strip() for s in content]
 
 word = content[random.randint(0, 5756)]
+logging.debug("Correct Word:" + word)
 
 
 def checkword(guess, word):
@@ -71,7 +72,7 @@ def main(word):
     else:
       cycles += 1
       result = checkword(guess, word)
-      logging.debug("elseword")
+      logging.debug("Word passed checks")
       
       print(result)
 
