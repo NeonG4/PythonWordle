@@ -8,10 +8,9 @@ logging.basicConfig(filename="output.log",
 
 file = open("words.txt", "r")
 content = file.readlines()
-content = [s.strip() for s in content]
+content = [s.lower().strip() for s in content]
 
 word = content[random.randint(0, 5756)]
-word = word
 
 
 def checkword(guess, word):
@@ -38,6 +37,7 @@ def main(word):
     if cycles >= 6:
       print("Game over! You lost")
       logging.debug("Cycles >= 6")
+      print("The word was " + word)
       break
     logging.debug("Getting guess")
     guess = input("What is your guess?").strip().lower()
