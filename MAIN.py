@@ -6,7 +6,7 @@ content = [s.lower().strip() for s in content]
 word = content[random.randint(0, 5756)]
 logging.basicConfig(filename="output.log",
                     filemode='a',
-                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s ' + word +' %(message)s',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                     datefmt='%H:%M:%S',
                     level=logging.DEBUG)
 logging.debug("Correct Word:" + word)
