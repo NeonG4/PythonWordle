@@ -1,7 +1,7 @@
 import os, random, re, sys, subprocess, logging
 
 logging.basicConfig(filename="output.log",
-                    filemode='a',
+                    filemode='w',
                     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                     datefmt='%H:%M:%S',
                     level=logging.DEBUG)
@@ -9,8 +9,12 @@ logging.basicConfig(filename="output.log",
 file = open("words.txt", "r")
 content = file.readlines()
 content = [s.lower().strip() for s in content]
-
 word = content[random.randint(0, 5756)]
+logging.basicConfig(filename="output.log",
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s ' + word +' %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.DEBUG)
 logging.debug("Correct Word:" + word)
 
 
