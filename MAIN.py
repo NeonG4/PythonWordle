@@ -27,8 +27,8 @@ def checkword(guess, word):
 
 def main(word):
   logging.debug("Started func")
-  os.system("cls")
-  os.system("clear")
+  try:	os.system("cls")
+  except:	os.system("clear")
   cycles = 0
 
   while True:
