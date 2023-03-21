@@ -1,4 +1,4 @@
-import os, random, re, sys, subprocess, logging
+import os, random, sys, logging
 
 file = open("words.txt", "r")
 content = file.readlines()
@@ -8,7 +8,8 @@ logging.basicConfig(filename="output.log",
                     filemode='w',
                     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                     datefmt='%H:%M:%S',
-                    level=logging.DEBUG)
+                    level=logging.DEBUG                    
+                    )
 logging.debug("Correct Word:" + word)
 
 
@@ -18,17 +19,18 @@ def checkword(guess, word):
     letter = word[i]
     if letter == guess[i]:
       rtrn.append("🟩")
+      logging.debug("green Letter")
     elif letter in guess:
       rtrn.append("🟨")
+      logging.debug("yellow Letter")
     else:
       rtrn.append("⬜")
+      logging.debug("white Letter")
   return rtrn
 
 
 def main(word):
   logging.debug("Started func")
-  try:	os.system("cls")
-  except:	os.system("clear")
   cycles = 0
 
   while True:
@@ -41,7 +43,7 @@ def main(word):
     logging.debug("Getting guess")
     guess = input("What is your guess?").strip().lower()
     logging.debug("Got guess")
-    #testcase
+    # testcase
 
     if not guess.isalpha():
       print("Please enter only letters!")
@@ -69,18 +71,13 @@ def main(word):
 
     else:
       cycles += 1
-      result = checkword(guess, word)
       logging.debug("Word passed checks")
+      result = checkword(guess, word)
       
-      print(result)
-
+      for letter in result:
+        print(letter, end="")
+      print("")
 
 if "__main__" == __name__:
-  ans = input("Do you want to play wordle?").strip().lower()
-  if re.search("y.*", ans):
-    main(word)
-  elif re.search("n.*", ans):
-    print("Okay...")
-    sys.exit()
-  else:
-    print("I'm sorry, I didn't quite understand.")
+  main(word)
+
