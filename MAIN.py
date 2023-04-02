@@ -1,16 +1,6 @@
 import os, random, sys, logging
 
-file = open("words.txt", "r")
-content = file.readlines()
-content = [s.lower().strip() for s in content]
-word = content[random.randint(0, 5756)]
-logging.basicConfig(filename="output.log",
-                    filemode='w',
-                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                    datefmt='%H:%M:%S',
-                    level=logging.DEBUG                    
-                    )
-logging.debug("Correct Word:" + word)
+
 
 
 def checkword(guess, word):
@@ -79,5 +69,16 @@ def main(word):
       print("")
 
 if "__main__" == __name__:
+  file = open("words.txt", "r")
+  content = file.readlines()
+  content = [s.lower().strip() for s in content]
+  word = content[random.randint(0, 5756)]
+  logging.basicConfig(filename="output.log",
+                      filemode='w',
+                      format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                      datefmt='%H:%M:%S',
+                      level=logging.DEBUG                    
+                      )
+  logging.debug("Correct Word:" + word)
   main(word)
 
