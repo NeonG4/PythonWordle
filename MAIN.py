@@ -1,21 +1,11 @@
 import os, random, sys, logging
 
-file = open("words.txt", "r")
-content = file.readlines()
-content = [s.lower().strip() for s in content]
-word = content[random.randint(0, 5756)]
-logging.basicConfig(filename="output.log",
-                    filemode='w',
-                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                    datefmt='%H:%M:%S',
-                    level=logging.DEBUG                    
-                    )
-logging.debug("Correct Word:" + word)
+
 
 
 def checkword(guess, word):
   rtrn = []
-  for i in range(0, 5, 1):
+  for i in range(0, 5, 1): # we should change the 5 to be the length of the word
     letter = word[i]
     if letter == guess[i]:
       rtrn.append("🟩")
@@ -29,7 +19,7 @@ def checkword(guess, word):
   return rtrn
 
 
-def main(word):
+def main(word, content):
   logging.debug("Started func")
   cycles = 0
 
@@ -78,6 +68,30 @@ def main(word):
         print(letter, end="")
       print("")
 
+
+
+def setup():
+  logging.basicConfig(filename="output.log",
+                     filemode='w',
+                     format='%(asctime)s,%(msecs)d %(levelname)s :: %(message)s',
+                     datefmt='%H:%M:%S',
+                     level=logging.DEBUG                    
+                     )
+      
+def getword():
+  file = open("words.txt", "r")
+  content = file.readlines()
+  content = [s.lower().strip() for s in content]
+  return [content[random.randint(0, 5756)], content]                
+
+
 if "__main__" == __name__:
-  main(word)
+
+
+
+  setup()
+  gls = getword()
+  word = gls[0]
+  logging.debug("Correct Word:" + word)
+  main(word, gls[1])
 
