@@ -19,7 +19,7 @@ def checkword(guess, word):
   return rtrn
 
 
-def main(word):
+def main(word, content):
   logging.debug("Started func")
   cycles = 0
 
@@ -68,17 +68,30 @@ def main(word):
         print(letter, end="")
       print("")
 
-if "__main__" == __name__:
+
+
+def setup():
+  logging.basicConfig(filename="output.log",
+                     filemode='w',
+                     format='%(asctime)s,%(msecs)d %(levelname)s :: %(message)s',
+                     datefmt='%H:%M:%S',
+                     level=logging.DEBUG                    
+                     )
+      
+def getword():
   file = open("words.txt", "r")
   content = file.readlines()
   content = [s.lower().strip() for s in content]
-  word = content[random.randint(0, 5756)]
-  logging.basicConfig(filename="output.log",
-                      filemode='w',
-                      format='%(asctime)s,%(msecs)d %(levelname)s :: %(message)s',
-                      datefmt='%H:%M:%S',
-                      level=logging.DEBUG                    
-                      )
+  return [content[random.randint(0, 5756)], content]                
+
+
+if "__main__" == __name__:
+
+
+
+  setup()
+  gls = getword()
+  word = gls[0]
   logging.debug("Correct Word:" + word)
-  main(word)
+  main(word, gls[1])
 
