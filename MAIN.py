@@ -5,7 +5,7 @@ import os, random, sys, logging
 
 def checkword(guess, word):
   rtrn = []
-  for i in range(0, 5, 1):
+  for i in range(0, 5, 1): # we should change the 5 to be the length of the word
     letter = word[i]
     if letter == guess[i]:
       rtrn.append("🟩")
@@ -75,7 +75,7 @@ if "__main__" == __name__:
   word = content[random.randint(0, 5756)]
   logging.basicConfig(filename="output.log",
                       filemode='w',
-                      format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                      format='%(asctime)s,%(msecs)d %(levelname)s :: %(message)s',
                       datefmt='%H:%M:%S',
                       level=logging.DEBUG                    
                       )
